@@ -153,13 +153,14 @@ export class ModelRepository<T extends Model = Model>
 	/**
 	 * Get the model identified by its identifier.
 	 * @param identifier - Identifier of the model.
+	 * @param defaultValue - Function called when there is no value matching the given identifier in the repository. Return null by default.
 	 */
-	get(identifier: string): T|null
+	get(identifier: string, defaultValue: (identifier: string) => T|null = () => null): T|null
 	{
 		return typeof this.models?.[identifier] !== "undefined"
 			// Model exists, returning it.
 			? this.models[identifier]
 			// Model does not exists, returning NULL.
-			: null;
+			: defaultValue(identifier);
 	}
 }
