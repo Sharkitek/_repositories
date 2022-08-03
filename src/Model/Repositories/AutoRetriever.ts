@@ -1,4 +1,3 @@
-import {ConstructorOf, Model} from "@sharkitek/core";
 
 /**
  * Auto retriever interface.
