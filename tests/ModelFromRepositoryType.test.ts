@@ -42,4 +42,9 @@ it("get the same object after two deserializations", () => {
 
 	// `a` of `secondB` should be `a` of `firstB`.
 	expect(secondB.a).toBe(firstB.a);
+
+	// If something changes in A instance of firstB,
+	// A instance of secondB should have the same modification (as it should be the same instance).
+	firstB.a.foo = "test";
+	expect(secondB.a.foo).toStrictEqual("test");
 });
